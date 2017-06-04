@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Hello World!</title>
+  </head>
+  <body>
+    <h1>Hello World!</h1>
+    <!-- All of the Node.js APIs are available in this renderer process. -->
+    We are using Node.js <script>document.write(process.versions.node)</script>,
+    Chromium <script>document.write(process.versions.chrome)</script>,
+    and Electron <script>document.write(process.versions.electron)</script>.
+
+        <button id="openFile" onclick="openFile();">Open</button>
+		<button id="saveFile">Save</button><br />
+
+<br />
+
+<textarea id="editor" style="width: 400px; height: 300px;"></textarea>
+  </body>
+  <script>
+ var remote = require('electron').remote; 
+
+ var dialog = require('electron').remote.dialog;
+var fs = require('fs');
+function openFile () {
+
+ dialog.showOpenDialog({ filters: [
+
+   { name: 'text', extensions: ['txt'] }
+
+  ]}, function (fileNames) {
+
+  if (fileNames === undefined) return;
+
+  var fileName = fileNames[0];
+
+  fs.readFile(fileName, 'utf-8', function (err, data) {
+
+    document.getElementById("editor").value = data;
+
+  });
+
+ }); 
+
+}
+    // You can also require other files to run in this process
+    require('./renderer.js')
+  </script>
+</html>
