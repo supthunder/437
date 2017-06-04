@@ -1,0 +1,14 @@
+{
+  "name": "hw2_1",
+  "version": "1.0.0",
+  "description": "Hw2 sample_1",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron ."
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "electron": "^1.6.10"
+  }
+}
